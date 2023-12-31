@@ -1,2 +1,3 @@
 # CleanArchitectureStudies
- Estudos de Arquitetura Limpa (Clean Architecture
+ Estudos de Arquitetura Limpa (Clean Architecture)
+ 
