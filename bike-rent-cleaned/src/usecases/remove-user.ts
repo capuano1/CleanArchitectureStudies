@@ -12,8 +12,8 @@ export class RemoveUser {
 
     findUser: FindUser = new FindUser(this.userRepo)
 
-    async removeUser(email: string): Promise<void> {
-        await this.findUser.findUser(email)
+    async perform(email: string): Promise<void> {
+        await this.findUser.perform(email)
         if ((await this.rentRepo.findOpenFor(email)).length > 0) {
             throw new UserHasOpenRentError
         }

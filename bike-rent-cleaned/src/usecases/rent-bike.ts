@@ -18,10 +18,10 @@ export class RentBike {
     findBike: FindBike = new FindBike(this.bikeRepo)
     findUser: FindUser = new FindUser(this.userRepo)
 
-    async rentBike(bikeId: string, userEmail: string): Promise<string> {
-        const bike = await this.findBike.findBike(bikeId)
+    async perform(bikeId: string, userEmail: string): Promise<string> {
+        const bike = await this.findBike.perform(bikeId)
         if (!bike.available) throw new UnavailableBikeError
-        const user = await this.findUser.findUser(userEmail)
+        const user = await this.findUser.perform(userEmail)
         await this.bikeRepo.updateAvailability(bikeId, false)
         const newRent = new Rent(bike, user, new Date())
         return await this.rentRepo.add(newRent)

@@ -7,7 +7,7 @@ export class ListUsers {
         readonly userRepo: UserRepo
     ){}
 
-    async listUsers(): Promise<User[]> {
+    async perform(): Promise<User[]> {
         return await this.userRepo.list()
     }
 }

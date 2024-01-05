@@ -7,7 +7,7 @@ export class ListBikes {
         readonly bikeRepo: BikeRepo
     ){}
 
-    async listBikes(): Promise<Bike[]> {
+    async perform(): Promise<Bike[]> {
         return await this.bikeRepo.list()
     }
 

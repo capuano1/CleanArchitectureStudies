@@ -10,7 +10,7 @@ export class ReturnBike {
         readonly rentRepo: RentRepo
     ){}
 
-    async returnBike(bikeId: string, userEmail: string): Promise<number> {
+    async perform(bikeId: string, userEmail: string): Promise<number> {
         const now = new Date()
         const rent = await this.rentRepo.findOpen(bikeId, userEmail)
         if (!rent) throw new RentNotFoundError()

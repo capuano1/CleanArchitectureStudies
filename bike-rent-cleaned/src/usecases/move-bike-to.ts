@@ -10,8 +10,8 @@ export class MoveBikeTo {
 
     findBike: FindBike = new FindBike(this.bikeRepo)
 
-    async moveBikeTo(bikeId: string, location: Location): Promise<void> {
-        await this.findBike.findBike(bikeId)
+    async perform(bikeId: string, location: Location): Promise<void> {
+        await this.findBike.perform(bikeId)
         await this.bikeRepo.updateLocation(bikeId, location.latitude, location.longitude)
     }
 }

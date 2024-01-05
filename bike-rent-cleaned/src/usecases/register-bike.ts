@@ -8,7 +8,7 @@ export class RegisterBike {
         readonly bikeRepo: BikeRepo
     ){}
 
-    async registerBike(bike: Bike): Promise<string> {
+    async perform(bike: Bike): Promise<string> {
         return await this.bikeRepo.add(bike)
     }
 }

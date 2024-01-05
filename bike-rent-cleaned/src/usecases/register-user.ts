@@ -12,7 +12,7 @@ export class RegisterUser {
         readonly userRepo: UserRepo
     ){}
 
-    async registerUser (user: User): Promise<string> {
+    async perform (user: User): Promise<string> {
         if (await this.userRepo.find(user.email)) {
             throw new DuplicateUserError()
         }

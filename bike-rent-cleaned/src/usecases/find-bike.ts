@@ -9,7 +9,7 @@ export class FindBike {
         readonly bikeRepo: BikeRepo
     ){}
 
-    async findBike(bikeId: string): Promise<Bike> {
+    async perform(bikeId: string): Promise<Bike> {
         const bike = await this.bikeRepo.find(bikeId)
         if (!bike) throw new BikeNotFoundError
         return bike

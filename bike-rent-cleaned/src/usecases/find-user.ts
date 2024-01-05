@@ -8,7 +8,7 @@ export class FindUser {
         readonly userRepo: UserRepo
     ) {}
 
-    async findUser (email: string): Promise<User> {
+    async perform (email: string): Promise<User> {
         const user = await this.userRepo.find(email)
         if (!user) throw new UserNotFoundError()
         return user

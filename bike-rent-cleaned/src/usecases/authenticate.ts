@@ -12,8 +12,8 @@ export class Authenticate {
 
     findUser: FindUser = new FindUser(this.userRepo)
 
-    async authenticate (userEmail: string, password: string): Promise<boolean> {
-        const user = await this.findUser.findUser(userEmail)
+    async perform (userEmail: string, password: string): Promise<boolean> {
+        const user = await this.findUser.perform(userEmail)
         return await this.crypt.authPassword(password, user.password)
     }
 }
