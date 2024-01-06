@@ -27,46 +27,46 @@ export class App {
     ) {}
 
     async findUser(email: string): Promise<User> {
-        return await new FindUser(this.userRepo).findUser(email)
+        return await new FindUser(this.userRepo).perform(email)
     }
 
     async registerUser(user: User): Promise<string> {
-        return await new RegisterUser(this.userRepo).registerUser(user)
+        return await new RegisterUser(this.userRepo).perform(user)
     }
 
     async authenticate(userEmail: string, password: string): Promise<boolean> {
-        return await new Authenticate(this.userRepo, this.crypt).authenticate(userEmail, password)
+        return await new Authenticate(this.userRepo, this.crypt).perform(userEmail, password)
     }
 
     async registerBike(bike: Bike): Promise<string> {
-        return await new RegisterBike(this.bikeRepo).registerBike(bike)
+        return await new RegisterBike(this.bikeRepo).perform(bike)
     }
 
     async removeUser(email: string): Promise<void> {
-        await new RemoveUser(this.userRepo, this.rentRepo).removeUser(email)
+        await new RemoveUser(this.userRepo, this.rentRepo).perform(email)
     }
     
     async rentBike(bikeId: string, userEmail: string): Promise<string> {
-        return await new RentBike(this.bikeRepo, this.userRepo, this.rentRepo).rentBike(bikeId, userEmail)
+        return await new RentBike(this.bikeRepo, this.userRepo, this.rentRepo).perform(bikeId, userEmail)
     }
 
     async returnBike(bikeId: string, userEmail: string): Promise<number> {
-        return await new ReturnBike(this.bikeRepo, this.rentRepo).returnBike(bikeId, userEmail)
+        return await new ReturnBike(this.bikeRepo, this.rentRepo).perform(bikeId, userEmail)
     }
 
     async listUsers(): Promise<User[]> {
-        return await new ListUsers(this.userRepo).listUsers()
+        return await new ListUsers(this.userRepo).perform()
     }
 
     async listBikes(): Promise<Bike[]> {
-        return await new ListBikes(this.bikeRepo).listBikes()
+        return await new ListBikes(this.bikeRepo).perform()
     }
 
     async moveBikeTo(bikeId: string, location: Location) {
-        await new MoveBikeTo(this.bikeRepo).moveBikeTo(bikeId, location)
+        await new MoveBikeTo(this.bikeRepo).perform(bikeId, location)
     }
 
     async findBike(bikeId: string): Promise<Bike> {
-        return await new FindBike(this.bikeRepo).findBike(bikeId)
+        return await new FindBike(this.bikeRepo).perform(bikeId)
     }
 }
